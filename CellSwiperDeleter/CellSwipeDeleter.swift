@@ -27,6 +27,8 @@ class CellSwipeDeleter {
         case Right
     }
     
+    /// Change Paranet VC type
+    
     init(parentVC: PurchaseRequestViewController?, cellView: UITableViewCell, cellBackgroundView: UIView, isSwipable: Bool, index: Int) {
         self.parentVC = parentVC
         self.cellView = cellView
@@ -47,7 +49,7 @@ class CellSwipeDeleter {
         
         self.editBackgroundView = CellSwipeDeleterBackground.getBackgroundEditView()
         self.editBackgroundView.frame = cellBackgroundView.frame
-        self.editBackgroundView.layer.cornerRadius = 10.0
+        self.editBackgroundView.layer.cornerRadius = 10.0  /// Change Background view Radius
         self.editBackgroundView.alpha = 0
         
         self.cellView.contentView.insertSubview(self.editBackgroundView, belowSubview: self.cellBackgroundView)
@@ -157,11 +159,9 @@ class CellSwipeDeleter {
     /// MARK: - Remove TableView Item
     
     private func deleteItemFromTable() {
+        self.parentVC!.putToTrash(requestID: requestID, index: self.index)  // Call function on Parant VC on removal
         
-        let requestID = self.parentVC!.purchaseRequests[self.index].purchase_request_id
-        self.parentVC!.putToTrash(requestID: requestID, index: self.index)
-        
-        self.parentVC!.purchaseRequests.remove(at: self.index)
+        self.parentVC!.purchaseRequests.remove(at: self.index)  /// Remove element from Array
         self.parentVC!.tableView.beginUpdates()
         self.parentVC!.tableView.deleteRows(at: [IndexPath(item: self.index, section: 0)], with: .left)
         self.parentVC!.tableView.endUpdates()
