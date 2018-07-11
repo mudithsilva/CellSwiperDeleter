@@ -16,7 +16,7 @@ class CellSwipeDeleter {
     private var cellView: UITableViewCell!
     private var cellBackgroundView: UIView!
     private var editBackgroundView: UIView!
-    public var parentVC: PurchaseRequestViewController?   /// Update Parent VC
+    public var parentVC: ViewController?   /// Update Parent VC
     public var index: Int!
     public var isSwipable: Bool!
     
@@ -29,7 +29,7 @@ class CellSwipeDeleter {
     
     /// Change Paranet VC type
     
-    init(parentVC: PurchaseRequestViewController?, cellView: UITableViewCell, cellBackgroundView: UIView, isSwipable: Bool, index: Int) {
+    init(parentVC: ViewController?, cellView: UITableViewCell, cellBackgroundView: UIView, isSwipable: Bool, index: Int) {
         self.parentVC = parentVC
         self.cellView = cellView
         self.cellBackgroundView = cellBackgroundView
